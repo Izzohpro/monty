@@ -46,3 +46,20 @@ void pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 }
+
+/**
+ * _pint - Prints the value at the top of the stack.
+ * @stack: pointer to the head of the stack.
+ * @line_number: line number
+ *
+ * Return: no return
+ */
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
