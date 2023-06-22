@@ -57,7 +57,8 @@ typedef struct instruction_s
 {
 	char *opcode;
 	void (*function)(stack_t **stack, unsigned int line_number)
-} instruction_t;
+} instruction_t
+;
 
 extern global_t vglo;
 
