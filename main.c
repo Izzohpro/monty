@@ -29,3 +29,31 @@ void start_vglo(FILE *fd)
 	vglo.file_descriptor = fd;
 	vglo.buffer = NULL;
 }
+
+/**
+ * check_input - checks if the file exists and can be opened
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: file dtruct
+ */
+FILE *check_input(int argc, char *argv[])
+{
+	FILE *fd;
+
+	if (argc == 1 || argc > 2)
+	{
+		dprintf(2, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	fd = fopen(argv[1], "r");
+
+	if (fd == NULL)
+	{
+		dprintf(2, "Error: can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+
+	return fd;
+}
