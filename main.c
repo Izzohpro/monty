@@ -13,6 +13,13 @@ void free_vglo(void)
 	free(vglo.buffer);
 	fclose(vglo.file_descriptor);
 }
+
+/**
+ * start_vglo - initialies the global variables
+ *
+ * @fd: file descriptor
+ * Return: no return
+ */
 void start_vglo(FILE *fd)
 {
 	vglo.is_lifo = 1;
