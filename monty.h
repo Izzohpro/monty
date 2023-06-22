@@ -46,5 +46,13 @@ void _nop(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
 
 void free_vglo(void);
+void _mul(stack_t **stack, unsigned int line_number);
+void _mol(stack_t **stack, unsigned int line_number);
+void _pchar(stack_t **stack, unsigned int line_number);
+void _pstrl(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotrl(stack_t **stack, unsigned int line_number);
+
+void free_vlog(void);
 
 #endif
