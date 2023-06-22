@@ -8,7 +8,6 @@
  */
 void free_vglo(global_t *vglo)
 {
-	free_dlistint(vglo->stack);
 	free(vglo->buffer);
 	fclose(vglo->file_descriptor);
 }
