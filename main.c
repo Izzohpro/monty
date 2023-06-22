@@ -1,33 +1,33 @@
 #include "monty.h"
 
-global_t vglo;
-
 /**
  * free_vglo - frees global variables
  *
+ * @vglo: pointer to the global structure
  * Return: no return
  */
-void free_vglo(void)
+void free_vglo(global_t *vglo)
 {
-	free_dlistint(vglo.stack);
-	free(vglo.buffer);
-	fclose(vglo.file_descriptor);
+	free_dlistint(vglo->stack);
+	free(vglo->buffer);
+	fclose(vglo->file_descriptor);
 }
 
 /**
  * start_vglo - initialies global variables
  *
+ * @vglo: pointer to the global structure
  * @fd: file descriptor
  * Return: no return
  */
-void start_vglo(FILE *fd)
+void start_vglo(global_t *vglo, FILE *fd)
 {
-	vglo.is_lifo = 1;
-	vglo.line_count = 1;
-	vglo.arg = NULL;
-	vglo.stack = NULL;
-	vglo.file_descriptor = fd;
-	vglo.buffer = NULL;
+	vglo->is_lifo = 1;
+	vglo->line_count = 1;
+	vglo->arg = NULL;
+	vglo->stack = NULL;
+	vglo->file_descriptor = fd;
+	vglo->buffer = NULL;
 }
 
 /**
@@ -55,13 +55,13 @@ FILE *check_input(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	return fd;
+	return (fd);
 }
 
 /**
  * main - Entry level
  *
- * @argc: arggument count
+ * @argc: argument count
  * @argv: argument vector
  * Return: 0 on success
  */
@@ -71,31 +71,36 @@ int main(int argc, char *argv[])
 	FILE *fd;
 	size_t size = 256;
 	ssize_t nlines = 0;
-	char *lines[2] = {NULL, NULL};
+	char *line = NULL;
+	char *token = NULL;
+	global_t vglo;
 
 	fd = check_input(argc, argv);
-	start_vlog(fd);
-	nlines = getline(&vglo.buffer, &size, fd;);
-	while (nlines != -1)
+	start_vlog(&vglo, fd);
+	while ((nlines = getline(&vglo.buffer, &size, fd)) != -1)
 	{
-		lines[0] = _strtoky(vglo.buffer. " \t\n");
-		if (lines[0] && lines[0][0] != '#')
+		line = strtok(vglo.buffer, "\n");
+		token = strtok(line, " \t");
+		while (token != NULL)
 		{
-			f = get_opcodes(lines[0]);
-			if (!f)
+			if (token[0] != '#')
 			{
-				dprint(2, "L%u: ", vglo.line_count);
-				dprintf(2, "unknown instruction %s\n", lines[0]);
-				free_vglo();
-				exit(EXIT_FAILURE);
+				f = get_opcodes(token);
+				if (!f)
+				{
+					dprintf(2, "L%u: ", vglo.line_count);
+					dprintf(2, "unknown instruction %s\n", token);
+					free_vglo(&vglo);
+					exit(EXIT_FAILURE);
+				}
+				vglo.arg = strtok(NULL, " \t");
+				f(&vglo.stack, vglo.line_count);
 			}
-			vglo.arg = _strtoky(NULL, " \t\n");
-			f(&vglo.stack, vglo.line_count);
+			token = strtok(NULL, " \t");
 		}
-		nlines = getline(&vglo.buffer, &size, fd);
 		vglo.line_count++;
 	}
 
-	free_vglo();
-}
+	free_vglo(&vglo);
+
 	return (0);
