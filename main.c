@@ -13,3 +13,12 @@ void free_vglo(void)
 	free(vglo.buffer);
 	fclose(vglo.file_descriptor);
 }
+void start_vglo(FILE *fd)
+{
+	vglo.is_lifo = 1;
+	vglo.line_count = 1;
+	vglo.arg = NULL;
+	vglo.stack = NULL;
+	vglo.file_descriptor = fd;
+	vglo.buffer = NULL;
+}
