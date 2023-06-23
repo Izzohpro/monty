@@ -17,7 +17,7 @@ void swap_op(stack_t **stack, unsigned int line_count)
 		exit(EXIT_FAILURE);
 	}
 
-	tmp= (*stack)->next;
+	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = *stack;
 	tmp->prev = (*stack)->prev;

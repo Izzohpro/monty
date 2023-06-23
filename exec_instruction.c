@@ -23,6 +23,9 @@ void exec_instruction(char *opcode, stack_t **stack, unsigned int line_count)
 		{"sub", sub_op},
 		{"div", div_op},
 		{"mul", mul_op},
+		{"mod", mod_op},
+		{"pchar", pchar_op},
+		{"pstr", pstr_op},
 	};
 
 	cindy = sizeof(instruc) / sizeof(instruction_t);

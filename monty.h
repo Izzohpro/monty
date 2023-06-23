@@ -55,5 +55,8 @@ void nop_op(stack_t **stack, unsigned int line_count);
 void sub_op(stack_t **stack, unsigned int line_count);
 void div_op(stack_t **stack, unsigned int line_count);
 void mul_op(stack_t **stack, unsigned int line_count);
+void mod_op(stack_t **stack, unsigned int line_count);
+void pchar_op(stack_t **stack, unsigned int line_count);
+void pstr_op(stack_t **stack, unsigned int line_count);
 
 #endif

@@ -14,7 +14,8 @@ void nop_op(stack_t **stack, unsigned int line_count)
 }
 
 /**
- * sub_op - subtracts top element of the stack from second top element of stack.
+ * sub_op - subtracts top element of the stack
+ * from second top element of stack.
  * @stack: double pointer to the head of the stack.
  * @line_count: line number of file.
  *
@@ -63,7 +64,8 @@ void div_op(stack_t **stack, unsigned int line_count)
 }
 
 /**
- * mul_op - multiplies second top element of the stack with top element of stack.
+ * mul_op - multiplies second top element of
+ * the stack with top element of stack.
  * @stack: double pointer to the head of stack.
  * @line_count: line count in the file.
  *
