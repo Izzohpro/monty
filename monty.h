@@ -49,5 +49,7 @@ int is_num(char *s);
 void push_opstack(stack_t **stack, int i);
 void pint_op(stack_t **stack, unsigned int line_count);
 void pop_op(stack_t **stack, unsigned int line_count);
+void swap_op(stack_t **stack, unsigned int line_count);
+void add_op(stack_t **stack, unsigned int line_count);
 
 #endif
