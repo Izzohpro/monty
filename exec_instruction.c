@@ -19,6 +19,10 @@ void exec_instruction(char *opcode, stack_t **stack, unsigned int line_count)
 		{"pop", pop_op},
 		{"swap", swap_op},
 		{"add", add_op},
+		{"nop", nop_op},
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
 	};
 
 	cindy = sizeof(instruc) / sizeof(instruction_t);

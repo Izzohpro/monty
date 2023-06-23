@@ -51,5 +51,9 @@ void pint_op(stack_t **stack, unsigned int line_count);
 void pop_op(stack_t **stack, unsigned int line_count);
 void swap_op(stack_t **stack, unsigned int line_count);
 void add_op(stack_t **stack, unsigned int line_count);
+void nop_op(stack_t **stack, unsigned int line_count);
+void sub_op(stack_t **stack, unsigned int line_count);
+void div_op(stack_t **stack, unsigned int line_count);
+void mul_op(stack_t **stack, unsigned int line_count);
 
 #endif
