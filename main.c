@@ -1,24 +1,24 @@
 #include "monty.h"
 
 /**
- * main - entry point of the program.
- * @argumentCount: number of command-line arguments.
- * @argumentVector: array of command-line arguments.
+ * main - main function.
+ * @argc: int argument.
+ * @argv: char argument.
  *
- * Return: exit status.
+ * Return: exit_success.
  */
-int main(int argumentCount, char *argumentVector[])
+int main(int argc, char *argv[])
 {
-	const char *docname;
+	const char *doc;
 
-	if (argumentCount != 2)
+	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	docname = argumentVector[1];
-	runfile(docname);
+	doc = argv[1];
+	run_file(doc);
 
 	return (EXIT_SUCCESS);
 }
