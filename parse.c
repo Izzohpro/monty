@@ -22,7 +22,7 @@ void parse_command(char *opcode, stack_t **head, unsigned int line_count)
 
 	i = sizeof(cindy) / sizeof(instruction_t);
 
-	for (c = 0; c < i; i++)
+	for (c = 0; c < i; c++)
 	{
 		if (strcmp(opcode, cindy[i].opcode) == 0)
 		{
@@ -64,7 +64,7 @@ void runfile(const char *docname)
 		line_count++;
 		opcode = strtok(line, " \n\t\r");
 
-		if (opcode == NULL || opcode[0] == '#')
+		if (opcode == NULL)
 			continue;
 
 		parse_command(opcode, &head, line_count);

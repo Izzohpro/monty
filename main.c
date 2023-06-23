@@ -9,7 +9,7 @@
  */
 int main(int argumentCount, char *argumentVector[])
 {
-	const char *fileName;
+	const char *docname;
 
 	if (argumentCount != 2)
 	{
@@ -17,8 +17,8 @@ int main(int argumentCount, char *argumentVector[])
 		exit(EXIT_FAILURE);
 	}
 
-	fileName = argumentVector[1];
-	runfile(fileName);
+	docname = argumentVector[1];
+	runfile(docname);
 
 	return (EXIT_SUCCESS);
 }
