@@ -39,30 +39,21 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **head, unsigned int line_count);
 } instruction_t;
 
 /* Function prototypes */
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void execute_command(char *opcode, stack_t **stack, unsigned int line_number);
-void processFile(const char *filename);
-void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void div_op(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
-void pchar(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
+void push_op(stack_t **head, unsigned int line_count);
+void pall_op(stack_t **head, unsigned int line_count);
+void pint_op(stack_t **head, unsigned int line_count);
+void pop_op(stack_t **head, unsigned int line_count);
+void swap_op(stack_t **head, unsigned int line_count);
+void runfile(const char *docname);
+void parse_command(char *opcode, stack_t **head, unsigned int line_count);
 
-/* Helper functions */
-int is_number(char *str);
-void push_stack(stack_t **stack, int n);
+
+/* assist prototype */
+int is_digit(char *string);
+void push_head(stack_t **head, int n);
 
 #endif /* MONTY_H */

@@ -18,7 +18,7 @@ int main(int argumentCount, char *argumentVector[])
 	}
 
 	fileName = argumentVector[1];
-	processFile(fileName);
+	runfile(fileName);
 
 	return (EXIT_SUCCESS);
 }

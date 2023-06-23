@@ -1,42 +1,42 @@
 #include "monty.h"
 
 /**
- * push - pushes element into the stack
- * @stack: pointer to the head of the stack
- * @line_number: line number in file.
+ * push_op- pushes element into the stack
+ * @head: pointer to the head of the stack
+ * @line_count: line number in file.
  *
- * Return: no return.
+ * Return: void
  */
-void push(stack_t **stack, unsigned int line_number)
+void push_op(stack_t **head, unsigned int line_count)
 {
 	char *argument;
 	int value;
 
 	argument = strtok(NULL, " \n");
 
-	if (argument == NULL || !is_number(argument))
+	if (argument == NULL || !is_digit(argument))
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 
 	value = atoi(argument);
-	push_stack(stack, value);
+	push_head(head, value);
 }
 
 /**
- * pall - prints all values on the stack
- * @stack: pointer to the head of stack.
- * @line_number: line number
+ * pall_op - prints all values on the stack
+ * @head: pointer to the head of stack.
+ * @line_count: line number
  *
- * Return: no return
+ * Return: void
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall_op(stack_t **head, unsigned int line_count)
 {
 	stack_t *current;
-	(void)line_number;
+	(void)line_count;
 
-	current = *stack;
+	current = *head;
 	if (current == NULL)
 		return;
 
@@ -48,72 +48,72 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _pint - Prints the value at the top of the stack.
- * @stack: pointer to the head of the stack.
- * @line_number: line number
+ * pint_op - Prints the value at the top of the stack.
+ * @head: pointer to the head of the stack.
+ * @line_count: line number
  *
  * Return: no return
  */
-void _pint(stack_t **stack, unsigned int line_number)
+void pint_op(stack_t **head, unsigned int line_count)
 {
-	if (*stack == NULL)
+	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", (*head)->n);
 }
 
 /**
- * _pop - removes the top element of the stack
- * @stack: pointer to the head of stack.
- * @line_number: line number
+ * pop_op - removes the top element of the stack
+ * @head: pointer to the head of stack.
+ * @line_count: line number
  *
- * Return:no return
+ * Return: void
  */
-void _pop(stack_t **stack, unsigned int line_number)
+void pop_op(stack_t **head, unsigned int line_count)
 {
 	stack_t *top;
 
-	if (*stack == NULL)
+	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
 		exit(EXIT_FAILURE);
 	}
-	top = *stack;
-	*stack = (*stack)->next;
+	top = *head;
+	*head = (*head)->next;
 
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
+	if (*head != NULL)
+		(*head)->prev = NULL;
 
 	free(top);
 }
 
 /**
- * _swap - swaps the elements of a stack
- * @stack: a pointer to the head of stack
- * @line_number: line number
+ * swap_op - swaps the elements of a stack
+ * @head: a pointer to the head of stack
+ * @line_count: line number
  *
  * Return: no return
  */
-void _swap(stack_t, unsigned int line_number)
+void swap_op(stack_t **head, unsigned int line_count)
 {
 	stack_t *top;
 
-	if (*stack == NULL ||(*stack)->next == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 
-	top = (*stack)->next;
-	(*stack)->next = top->next;
-	top->next = *stack;
-	top->prev = (*stack)-prev;
-	(*stack)-> = top;
+	top = (*head)->next;
+	(*head)->next = top->next;
+	top->next = *head;
+	top->prev = (*head)->prev;
+	(*head)->prev = top;
 
-	if ((*stack)->next !+ NULL)
-		(*stack)->next->prev = *stack;
+	if ((*head)->next != NULL)
+		(*head)->next->prev = *head;
 
-	*stack = top;
+	*head = top;
 }
