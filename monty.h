@@ -50,7 +50,8 @@ void pop_op(stack_t **head, unsigned int line_count);
 void swap_op(stack_t **head, unsigned int line_count);
 void runfile(const char *docname);
 void parse_command(char *opcode, stack_t **head, unsigned int line_count);
-
+void nop(stack_t **head, unsigned int line_count);
+void add(stack_t **head, unsigned int line_count);
 
 /* assist prototype */
 int is_digit(char *string);
