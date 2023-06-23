@@ -22,9 +22,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcode and its function
@@ -36,8 +36,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* Prototypes */
@@ -47,5 +47,7 @@ void exec_instruction(char *opcode, stack_t **stack, unsigned int line_count);
 void run_file(const char *doc);
 int is_num(char *s);
 void push_opstack(stack_t **stack, int i);
+void pint_op(stack_t **stack, unsigned int line_count);
+void pop_op(stack_t **stack, unsigned int line_count);
 
 #endif
