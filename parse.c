@@ -64,7 +64,7 @@ void runfile(const char *docname)
 		line_count++;
 		opcode = strtok(line, " \n\t\r");
 
-		if (opcode == NULL)
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
 
 		parse_command(opcode, &head, line_count);
